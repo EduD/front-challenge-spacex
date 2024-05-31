@@ -11,17 +11,17 @@ import { GET_CHARACTERS } from "../graphql/query/characters.graphql";
 import { Characters } from "../types";
 
 export const Grid = () => {
-  const [selected, setSelected] = useState<string | null>(null);
+  const [selected, setSelected] = useState <string | null>(null);
 
-  const { loading, error, data } = useQuery<Characters>(GET_CHARACTERS);
+  const { loading, error, data } = useQuery <Characters> (GET_CHARACTERS);
 
   if (loading) return <Loading />;
 
   if (error) return <ErrorMessage error={error.message} />;
 
   return (
-    <section className="grid  grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 my-10 lg:gap-10 gap-5 px-5 sm:px-8 lg:px-12">
-      <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 my-10 lg:gap-10 gap-5 px-5 sm:px-8 lg:px-12">
+    <section className="grid sm:grid-cols-2 lg:grid-cols-2 my-10 lg:gap-10 gap-5 px-5 sm:px-8 lg:px-12">
+      <div className="grid lg:grid-cols-2 my-10 lg:gap-10 gap-5 px-5 sm:px-8 lg:px-12">
         {data?.characters.results.map((character, index) => (
           <CardCharacter
             key={character.id}

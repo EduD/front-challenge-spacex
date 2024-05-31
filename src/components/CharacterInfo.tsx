@@ -5,7 +5,7 @@ import { ErrorMessage } from "./ErrorMessage";
 import { Loading } from "./Loading";
 
 export const CharacterInfo = ({ characterId }: { characterId: string }) => {
-  const { data, loading, error } = useQuery<CharacterByID>(
+  const { data, loading, error } = useQuery <CharacterByID> (
     GET_CHARACTER_BY_ID,
     { variables: { id: characterId } }
   );
