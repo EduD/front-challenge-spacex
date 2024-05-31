@@ -13,7 +13,7 @@ const App = () => {
   return (
     <ApolloProvider client={client}>
       <Layout>
-        <div>Hello world</div>
+        <Grid />
       </Layout>
     </ApolloProvider>
   );

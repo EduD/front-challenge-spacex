@@ -1,1 +1,1 @@
-export * from './characters.graphql';
+export * from "./characters.graphql";
