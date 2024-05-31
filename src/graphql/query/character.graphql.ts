@@ -24,6 +24,7 @@ export const GET_CHARACTER_BY_ID = gql`
       gender
       image
       created
+      
     }
   }
 `;
