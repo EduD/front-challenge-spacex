@@ -9,7 +9,7 @@ interface Props extends ResultCharacters {
 }
 
 export const CardCharacter = (props: Props) => {
-  const { id, image, name, onSelected, index } = props; // the position of the selected character.
+  const { id, image, name, onSelected, index } = props; 
 
   return (
     <motion.div
