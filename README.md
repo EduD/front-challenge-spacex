@@ -65,6 +65,6 @@ npm test
 
 3. What would you do differently if you were allocated more time
 
-I would sharpen the layout to help on the scalability of the project. Also, the Rick and Morty SpaceX API is pretty impressive, with a lot of data, so theres almost infinite ways to add new features. With a lot of data using characters ID.
+I would sharpen the layout to help on the scalability of the project. Also, the Rick and Morty is pretty impressive, with a lot of data, so theres almost infinite ways to add new features. With a lot of data using characters ID.
 
 Development-wise, i would focus on learning better practices of GraphQL, since i've never used it professionally.
