@@ -1,8 +1,11 @@
-## SolarMarket Front-end Challenge
+# 🚀 SolarMarket Front-end Challenge
 
 <img src="front-challenge-rickandmortyapi.vercel.app_.png">
 
-# Project Deploy - [click here](https://front-end-challenge-iota.vercel.app/).
+## Challenge concluded
+DESAFIO: [AQUI](https://github.com/luanrramos/front-challenge-spacex/blob/JR-luanramos/challenge.md)      
+DEPLOY ONLINE: [rickandmorty.luanramos.com.br/](https://rickandmorty.luanramos.com.br/)  
+INSTRUÇÕES: [AQUI](https://github.com/luanrramos/front-challenge-spacex/blob/JR-luanramos/INSTRUCTIONS.md)      
 
 ## Technologies
 
@@ -40,7 +43,7 @@ npm run dev
 
 2. The service will show the link to you access this application
 
-### Running tests
+## Running tests
 
 1. Run on terminal this command:
 
@@ -54,7 +57,7 @@ npm test
 
 - I utilized React to build a component-based application, enabling modularization and scalability.
 
-- I employed Jest to design and execute simple unit tests, ensuring components were fully developed before implementation.
+- I employed Jest and React Testing Library to design and execute simple unit tests, ensuring components were fully developed before implementation.
 
 2. Are there any improvements you could make to your submission
 
@@ -62,4 +65,6 @@ npm test
 
 3. What would you do differently if you were allocated more time
 
-- I could have explore a bit deeper into the architecture of GraphQL APIs and unitary tests.
+I would sharpen the layout to help on the scalability of the project. Also, the Rick and Morty SpaceX API is pretty impressive, with a lot of data, so theres almost infinite ways to add new features. With a lot of data using characters ID.
+
+Development-wise, i would focus on learning better practices of GraphQL, since i've never used it professionally.
