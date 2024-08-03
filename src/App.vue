@@ -1,30 +1,51 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
+import { useQuery } from "@vue/apollo-composable";
+import gql from "graphql-tag";
+import { onMounted, ref, watch } from "vue";
+
+export interface Pokemon {
+  id: string;
+  name: string;
+  artwork: string;
+}
+
+interface QueryAllPokemonsResponse {
+  pokemons: {
+    results: Pokemon[];
+  };
+}
+
+const QUERY_POKEMONS = gql`
+  query pokemons($limit: Int, $offset: Int) {
+    pokemons(limit: $limit, offset: $offset) {
+      results {
+        name
+        id
+        artwork
+      }
+    }
+  }
+`;
+
+const pokemons = ref<Pokemon[]>();
+
+onMounted(() => {
+  const variables = { limit: 10, offset: 0 };
+  const { result } = useQuery<QueryAllPokemonsResponse>(
+    QUERY_POKEMONS,
+    variables
+  );
+
+  watch(result, (updated) => {
+    if (updated && updated) {
+      pokemons.value = updated.pokemons.results;
+    }
+  });
+});
 </script>
 
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>
-  <HelloWorld msg="Vite + Vue" />
+  <p v-for="pokemon in pokemons" :key="pokemon.id">{{pokemon.name}}</p>
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
-</style>
+<style scoped></style>
