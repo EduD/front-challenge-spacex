@@ -1,5 +1,6 @@
 import './style.css'
 import App from './App.vue'
+import router from './router'
 
 import { createApp, provide, h } from 'vue'
 import { DefaultApolloClient } from '@vue/apollo-composable'
@@ -11,4 +12,4 @@ createApp({
   },
 
   render: () => h(App),
-}).mount("#app")
+}).use(router).mount("#app")

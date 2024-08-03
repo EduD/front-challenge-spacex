@@ -1,4 +1,5 @@
 <template>
+  <RouterLink :to="`pokemon/${pokemon.id}`">
     <div class="card">
       <div class="card-header">
         <h1>{{ capitalize(pokemon.name) }}</h1>
@@ -12,11 +13,13 @@
         </div>
       </div>
     </div>
+  </RouterLink>
   </template>
   
   <script setup lang="ts">
   import { PropType } from "vue";
-  import { Pokemon } from "../App.vue";
+import { Pokemon } from "../interfaces/pokemon";
+import { RouterLink } from "vue-router";
   defineProps({
     pokemon: {
       required: true,
