@@ -11,6 +11,7 @@
   height: 48px;
   border-radius: 50%;
   position: relative;
+  margin: auto 0;
   animation: rotate 1s linear infinite;
 }
 .loading::before {

@@ -62,8 +62,8 @@ const route = useRoute();
 const router = useRouter();
 
 const backToAllPokemons = () => {
-  router.push('/dashboard');
-}
+  router.push("/dashboard");
+};
 
 onMounted(() => {
   const pokemonName = route.params.name;
@@ -85,24 +85,25 @@ onMounted(() => {
       pokemon.value = { ...updated.pokemon, artwork: artwork.value };
     }
   });
-
-  loading.value = false;
 });
 
 const queryPokemonArtwork = (id: string) => {
   const artworkVariables = { offset: Number(id) - 1, limit: 1 };
+  loading.value = true;
   const { result: pokemonArtworkResult } = useQuery<QueryAllPokemonsResponse>(
     QUERY_POKEMON_ARTWORK,
     artworkVariables
   );
   if (pokemonArtworkResult.value) {
     artwork.value = pokemonArtworkResult.value.pokemons.results[0].artwork;
+    loading.value = false;
   }
 
   watch(pokemonArtworkResult, (updated) => {
     if (updated) {
       artwork.value = updated.pokemons.results[0].artwork;
     }
+    loading.value = false;
   });
 };
 
@@ -123,11 +124,12 @@ watchEffect(() => {
       </div>
       <div class="body">
         <div class="images">
-          <img
+          <div class="mainImage" :class="pokemon.types[0].type.name">
+            <img
             :src="pokemon.artwork"
             alt=""
-            :class="pokemon.types[0].type.name"
-          />
+            />
+          </div>
           <div class="sprites" v-if="pokemon.sprites">
             <img :src="pokemon.sprites.front_default" alt="" />
             <img :src="pokemon.sprites.back_default" alt="" />
@@ -209,7 +211,7 @@ watchEffect(() => {
 .pokemon .header {
   display: flex;
   align-items: center;
-  gap: 3rem;
+  gap: 1.5rem;
   justify-content: center;
 }
 
@@ -235,7 +237,6 @@ watchEffect(() => {
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: space-between;
   gap: 1rem;
 }
@@ -250,7 +251,14 @@ watchEffect(() => {
 .pokemon .body img {
   max-width: 100%;
   height: 200px;
+}
+
+.pokemon .body .mainImage {
   border-radius: 20px;
+}
+
+.pokemon .body .mainImage img {
+  animation: bouge 5s ease-in-out infinite;
 }
 
 .pokemon .body .sprites {
@@ -292,6 +300,10 @@ watchEffect(() => {
 @media screen and (min-width: 769px) {
   .pokemon {
     width: 50%;
+  }
+
+  .pokemon .header {
+    gap: 3rem;
   }
 
   .pokemon .body {

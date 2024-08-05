@@ -19,7 +19,7 @@
   </template>
   
   <script lang="ts" setup>
-  import { defineProps, defineEmits, ref, computed } from 'vue';
+  import { defineProps, defineEmits, computed } from 'vue';
   
   const props = defineProps<{
     offset: number;

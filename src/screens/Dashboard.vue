@@ -50,15 +50,16 @@ onMounted(() => {
     );
     if (result.value) {
       pokemons.value = result.value.pokemons.results;
+      loading.value = false;
     }
 
     watch(result, (updated) => {
       if (updated) {
         pokemons.value = updated.pokemons.results;
       }
+      loading.value = false;
     });
 
-    loading.value = false;
   };
 
   queryPokemons(offset.value, limit);
