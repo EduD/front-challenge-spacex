@@ -3,12 +3,14 @@ import { useQuery } from "@vue/apollo-composable";
 import gql from "graphql-tag";
 import { onMounted, ref, watch } from "vue";
 import PokemonCard from "../components/PokemonCard.vue";
-import {Pokemon} from "../interfaces/pokemon";
+import { Pokemon } from "../interfaces/pokemon";
+import Pagination from "../components/Pagination.vue";
+import Loading from "../components/Loading.vue";
 
 export interface QueryAllPokemonsResponse {
-    pokemons: {
-        results: Pokemon[];
-    };
+  pokemons: {
+    results: Pokemon[];
+  };
 }
 
 const QUERY_POKEMONS = gql`
@@ -24,52 +26,91 @@ const QUERY_POKEMONS = gql`
 `;
 
 const pokemons = ref<Pokemon[]>();
+const offset = ref(0);
+const loading = ref(false);
+
+const handleOffsetUpdate = (newOffset: number) => {
+  offset.value = newOffset;
+};
+
 
 onMounted(() => {
-    const variables = { limit: 10, offset: 0 };
+
+  const limit = 10;
+
+  const queryPokemons = (offset: number, limit: number) => {
+    loading.value = true;
+    
     const { result } = useQuery<QueryAllPokemonsResponse>(
-        QUERY_POKEMONS,
-        variables
+      QUERY_POKEMONS,
+      {
+        offset: offset,
+        limit: limit
+      }
     );
     if (result.value) {
-        pokemons.value = result.value.pokemons.results;
+      pokemons.value = result.value.pokemons.results;
     }
-    
+
     watch(result, (updated) => {
-        if (updated && updated) {
-            pokemons.value = updated.pokemons.results;
-        }
-        console.log(updated);
+      if (updated) {
+        pokemons.value = updated.pokemons.results;
+      }
     });
+
+    loading.value = false;
+  };
+
+  queryPokemons(offset.value, limit);
+
+  watch(offset, (newOffset, oldOffset) => {
+    if (newOffset != oldOffset) {
+      queryPokemons(newOffset, limit);
+    }
+  });
 });
 </script>
 
 <template>
-    <div class="container">
-        <h1>Pokedex</h1>
-        <div class="allPokemons">
-            <PokemonCard v-for="pokemon in pokemons" :pokemon="pokemon" :key="pokemon.id" />
-        </div>
+  <div class="container">
+    <header>
+      <h1>Pokedex</h1>
+      <Pagination :offset="offset" @update:offset="handleOffsetUpdate" />
+    </header>
+    <Loading v-if="loading"/>
+    <div class="allPokemons" v-else>
+      <PokemonCard
+        v-for="pokemon in pokemons"
+        :pokemon="pokemon"
+        :key="pokemon.id"
+      />
     </div>
+  </div>
 </template>
 
 <style scoped>
-
+header {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center
+}
 .allPokemons {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
 }
 
 @media screen and (min-width: 769px) {
-    .allPokemons {
-        flex-direction: row;
-    }
+  .allPokemons {
+    flex-direction: row;
+  }
 
-    .container img {
-        max-width: 400px;
-    }
+  .container img {
+    max-width: 400px;
+  }
 }
 </style>

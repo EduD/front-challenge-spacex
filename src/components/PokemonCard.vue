@@ -29,10 +29,15 @@ defineProps({
   },
 });
 
-
 </script>
 
 <style scoped>
+a {
+  flex: 1;
+  flex-basis: 300px;
+  max-width: 350px;
+  width: 100%;
+}
 .card {
   line-height: 1;
   display: flex;
@@ -43,11 +48,8 @@ defineProps({
   padding: 1rem;
   background-image: linear-gradient(to right bottom, #cfffd0, #fff);
   cursor: pointer;
-  min-width: 400px;
   justify-content: space-between;
   transition: .2s;
-  flex-basis: 400px;
-  flex: 1;
   color: #1f1f1f;
 }
 
@@ -75,7 +77,7 @@ defineProps({
 }
 
 .card .card-body .id {
-  font-size: 4rem;
+  font-size: 3rem;
 }
 
 .card .card-body .id p {

@@ -32,7 +32,6 @@ body {
 }
 
 .container h1 {
-  align-self: flex-start;
   font-size: 1.5rem;
 }
 
