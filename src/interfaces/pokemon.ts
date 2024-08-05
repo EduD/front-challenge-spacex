@@ -5,9 +5,22 @@ export interface Pokemon {
   sprites: Sprite;
   height: number;
   weight: number;
-  abilities: { ability: Ability }[];
-  types: { type: Type }[];
-  stats: { stat: Stat, base_stat: number }[];
+  abilities: PokemonAbility[];
+  types: PokemonType[];
+  stats: PokemonStat[];
+}
+
+export interface PokemonStat {
+  stat: Stat;
+  base_stat: number;
+}
+
+export interface PokemonType {
+  type: Type
+}
+
+export interface PokemonAbility {
+  ability: Ability;
 }
 
 interface Sprite {
@@ -19,7 +32,7 @@ interface Ability {
   name: string;
 }
 
-export interface Stat {
+interface Stat {
   name: string;
 }
 

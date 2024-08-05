@@ -2,7 +2,7 @@
 import { useQuery } from "@vue/apollo-composable";
 import gql from "graphql-tag";
 import { onMounted, ref, watch, watchEffect } from "vue";
-import { Pokemon, Stat } from "../interfaces/pokemon";
+import { Pokemon, PokemonAbility, PokemonStat } from "../interfaces/pokemon";
 import { useRoute, useRouter } from "vue-router";
 import PokemonType from "../components/PokemonType.vue";
 import useUtils from "../composables/useUtils";
@@ -146,8 +146,7 @@ watchEffect(() => {
             HP:
             <span>
               {{
-                pokemon.stats.find((stat: any) => stat.stat.name == "hp")
-                  ?.base_stat
+                pokemon.stats.find((stat: PokemonStat) => stat.stat.name === "hp")?.base_stat
               }}</span
             >
           </p>
@@ -155,7 +154,7 @@ watchEffect(() => {
             Attack:
             <span>
               {{
-                pokemon.stats.find((stat: any) => stat.stat.name == "attack")
+                pokemon.stats.find((stat: PokemonStat) => stat.stat.name == "attack")
                   ?.base_stat
               }}</span
             >
@@ -164,7 +163,7 @@ watchEffect(() => {
             Defense:
             <span>
               {{
-                pokemon.stats.find((stat: any) => stat.stat.name == "defense")
+                pokemon.stats.find((stat: PokemonStat) => stat.stat.name == "defense")
                   ?.base_stat
               }}</span
             >
@@ -174,7 +173,7 @@ watchEffect(() => {
             Abilities:
             <span>
               {{
-                pokemon.abilities.map((a: any) => a.ability.name).join(", ")
+                pokemon.abilities.map((a: PokemonAbility) => a.ability.name).join(", ")
               }}</span
             >
           </p>
