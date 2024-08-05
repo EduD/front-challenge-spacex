@@ -1,21 +1,106 @@
 @import './reset.css';
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Saira:ital,wght@0,100..900;1,100..900&display=swap');
 
 :root {
   font-family: "Press Start 2P", system-ui, Avenir, Helvetica, Arial, sans-serif;
   color: #1f1f1f;
-  background-color: #cfffd0;
+  background-image: linear-gradient(to right bottom, #c1e1ed, #cfffd0);
 }
 
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
 
 body {
   margin: 0;
   display: flex;
-  place-items: center;
   min-height: 100vh;
 }
 
 #app {
+  width: 100%;
   padding: 2rem;
-  text-align: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4rem;
+}
+
+.container h1 {
+  align-self: flex-start;
+  font-size: 1.5rem;
+}
+
+a {
+  text-decoration: none;
+}
+
+@media screen and (min-width: 769px) {
+  .container h1 {
+    font-size: 3rem;
+  }
+}
+
+.normal {
+  background: rgb(204, 204, 181);
+}
+.fighting {
+  background: tomato;
+}
+.flying {
+  background: linear-gradient(to bottom, lightblue 50%, rgb(204, 204, 181));
+}
+.poison {
+  background: linear-gradient(to bottom, pink 50%, purple 50%);
+}
+.ground {
+  background: linear-gradient(to bottom, gold 50%, rgb(202, 172, 0));
+}
+.rock {
+  background: rgb(202, 172, 0);
+}
+.bug {
+  background: gold;
+}
+.ghost {
+  background: purple;
+}
+.steel {
+  background: linear-gradient(
+    to bottom,
+    rgb(204, 204, 181) 50%,
+    rgb(31, 102, 73)
+  );
+}
+.fairy {
+  background: linear-gradient(to bottom, lightblue 50%, pink);
+}
+.fire {
+  background: orangered;
+}
+.water {
+  background: rgb(58, 143, 255);
+}
+.grass {
+  background: lightgreen;
+}
+.electric {
+  background: orange;
+}
+.psychic {
+  background: pink;
+}
+.ice {
+  background: lightblue;
+}
+.dragon {
+  background: linear-gradient(to bottom, rgb(58, 143, 255) 50%, tomato);
+}
+.dark {
+  background: rgb(31, 102, 73);
 }

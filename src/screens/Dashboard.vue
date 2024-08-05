@@ -3,9 +3,9 @@ import { useQuery } from "@vue/apollo-composable";
 import gql from "graphql-tag";
 import { onMounted, ref, watch } from "vue";
 import PokemonCard from "../components/PokemonCard.vue";
-import { Pokemon } from "../interfaces/pokemon";
+import {Pokemon} from "../interfaces/pokemon";
 
-interface QueryAllPokemonsResponse {
+export interface QueryAllPokemonsResponse {
     pokemons: {
         results: Pokemon[];
     };
@@ -31,11 +31,15 @@ onMounted(() => {
         QUERY_POKEMONS,
         variables
     );
-
+    if (result.value) {
+        pokemons.value = result.value.pokemons.results;
+    }
+    
     watch(result, (updated) => {
         if (updated && updated) {
             pokemons.value = updated.pokemons.results;
         }
+        console.log(updated);
     });
 });
 </script>
@@ -50,17 +54,6 @@ onMounted(() => {
 </template>
 
 <style scoped>
-.container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4rem;
-}
-
-.container h1 {
-    align-self: flex-start;
-    font-size: 3rem;
-}
 
 .allPokemons {
     display: flex;

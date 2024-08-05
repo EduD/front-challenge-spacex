@@ -6,7 +6,7 @@ import Pokemon from "./screens/Pokemon.vue";
 const routes = [
   { path: "/", redirect: "dashboard" },
   { path: "/dashboard", name: "dashboard", component: Dashboard },
-  { path: "/pokemon", name: "pokemon", component: Pokemon },
+  { path: "/pokemon/:name", name: "pokemon", component: Pokemon },
 ];
 
 const router = createRouter({
