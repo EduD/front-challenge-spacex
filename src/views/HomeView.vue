@@ -27,7 +27,6 @@ import { type RawPokemon } from '../interfaces/RawPokemon';
 
 const pokemons = ref<Pokemon[]>([]);
 
-// Função para buscar os Pokémon
 async function fetchPokemons() {
   const variables = {
     limit: 10,
@@ -48,11 +47,10 @@ async function fetchPokemons() {
       image: pokemon.pokemon_v2_pokemonsprites[0].sprites.front_default,
     }));
   } catch (error) {
-    throw Error ('Erro ao buscar Pokémon');
+    console.error('Erro ao buscar Pokémon', error);
   }
 }
 
-// Executar a busca ao montar o componente
 onBeforeMount(() => {
   fetchPokemons();
 });
