@@ -3,6 +3,7 @@ import App from './App.vue'
 import { ApolloClients } from '@vue/apollo-composable'
 import router from './router'
 import client from './services/client'
+import './styles/main.css'
 
 const app = createApp({
   provide: {
