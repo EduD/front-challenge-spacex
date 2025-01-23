@@ -35,7 +35,6 @@ async function fetchPokemonDetails() {
     });
 
     const pokemonData = data.pokemon_v2_pokemon[0];
-    console.log(pokemonData)
 
     pokemon.value = {
       pokedex: pokemonData.id,
@@ -75,7 +74,8 @@ onBeforeMount(() => {
 
 .pokemon-image {
   max-width: 100%;
-  height: auto;
+  height: 250px;
+  width: 250px;
   border-radius: 10px;
 }
 

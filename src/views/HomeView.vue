@@ -39,8 +39,6 @@ async function fetchPokemons() {
       variables,
     });
 
-    console.log(data)
-
     pokemons.value = data.pokemon_v2_pokemon.map((pokemon: RawPokemon): Pokemon => ({
       pokedex: pokemon.id,
       name: pokemon.name,
