@@ -23,7 +23,7 @@ import { ref, onBeforeMount } from 'vue';
 import client from '../services/client';
 import { GET_RANDOM_POKEMONS } from '../services/getRandomPokemons';
 import { type Pokemon } from '../interfaces/Pokemon';
-import { type RawPokemon } from '../interfaces/RawPokemon';
+import { type PokemonFromApi } from '../interfaces/PokemonFromApi';
 
 const pokemons = ref<Pokemon[]>([]);
 
@@ -39,7 +39,8 @@ async function fetchPokemons() {
       variables,
     });
 
-    pokemons.value = data.pokemon_v2_pokemon.map((pokemon: RawPokemon): Pokemon => ({
+    pokemons.value = data.pokemon_v2_pokemon.map((pokemon: PokemonFromApi): Pokemon => ({
+      id: pokemon.id,
       pokedex: pokemon.id,
       name: pokemon.name,
       image: pokemon.pokemon_v2_pokemonsprites[0].sprites.front_default,
