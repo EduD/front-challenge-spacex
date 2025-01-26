@@ -11,7 +11,7 @@
     npm install -g yarn 
     ```
 
-3. Clone o repositório [repository](git@github.com:LeonardoMelloTrindade/jr-leotrindade.git).
+3. Clone o repositório
     ```bash
     git clone git@github.com:LeonardoMelloTrindade/jr-leotrindade.git
     ```
