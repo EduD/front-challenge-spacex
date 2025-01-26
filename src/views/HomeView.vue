@@ -59,6 +59,7 @@ onBeforeMount(() => {
 main {
   display: flex;
   justify-content: center;
+  text-transform: capitalize;
 }
 
 div {
@@ -76,6 +77,20 @@ section {
   flex-wrap: wrap;
   gap: 16px;
   justify-content: center;
+}
+
+footer {
+  margin-top: 5px;
+}
+
+footer a {
+  text-decoration: none;
+  font-weight: 800;
+}
+
+footer a:hover {
+  transition: 0.3s;
+  color: brown;
 }
 
 .card {
