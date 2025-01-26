@@ -13,7 +13,7 @@
 
 3. Clone o repositório
     ```bash
-    git clone git@github.com:LeonardoMelloTrindade/jr-leotrindade.git
+    git clone https://github.com/LeonardoMelloTrindade/front-challenge-spacex.git
     ```
 
 4. Instale as dependências na raiz do projeto
